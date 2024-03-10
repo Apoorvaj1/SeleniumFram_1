@@ -4,7 +4,27 @@
     <test verbose="2" preserve-order="true" name="D:/Selenium Project/SeleniumFram5X">
         <parameter name="browser" value="edge"/>
         <classes>
-            <class name="org.selenium.aj.Demo">
+            <class name="org.selenium.aj.Demo"/>
+            <class name="org.selenium.aj.Priority_1"/>
+        </classes>
+    </test>
+
+    <test verbose="2" preserve-order="true" name="D:/Selenium Project/SeleniumFram5X">
+        <parameter name="browser" value="edge"/>
+        <classes>
+            <class name="org.selenium.aj.Parameter_1">
+            </class>
+        </classes>
+    </test>
+
+    <test verbose="2" preserve-order="true" name="D:/Selenium Project/SeleniumFram5X">
+        <groups>
+            <run>
+                <include name="sanity"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="org.selenium.aj.Group_1">
             </class>
         </classes>
     </test>
