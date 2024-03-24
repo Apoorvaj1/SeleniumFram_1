@@ -1,6 +1,6 @@
 package KatalonDemoProject;
 
-import io.qameta.allure.internal.shadowed.jackson.annotation.JsonTypeInfo;
+import KatalonDemoProject.Constants.Constants;
 import org.openqa.selenium.By;
 import org.openqa.selenium.PageLoadStrategy;
 import org.openqa.selenium.WebDriver;
@@ -11,11 +11,14 @@ import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import java.util.List;
 
+@Listeners(MyListeners.MyITestListeners.class)
+
 public class Test_1 {
-    WebDriver driver;
+    public static WebDriver driver;
     @BeforeTest
     public void setUp() throws InterruptedException {
         EdgeOptions options = new EdgeOptions();
@@ -25,18 +28,18 @@ public class Test_1 {
         driver = new EdgeDriver(options);
         driver.manage().window().maximize();
         driver.get("https://katalon-demo-cura.herokuapp.com/");
-        Thread.sleep(2000);
+        Thread.sleep(Constants.SHORT_WAIT);
     }
     @Test
     public void verifyTitle(){
         String actual_title = driver.getTitle();
-        Assert.assertEquals(actual_title,"CURA Healthcare Service");
+        Assert.assertEquals(actual_title, Constants.HOME_PAGE_TITLE);
         System.out.println("Title is "+actual_title);
     }
     @Test
     public void verifyHomeURL(){
         String actualURL = driver.getCurrentUrl();
-        Assert.assertEquals(actualURL,"https://katalon-demo-cura.herokuapp.com/");
+        Assert.assertEquals(actualURL,Constants.HOME_PAGE_URL);
         System.out.println("URL is "+actualURL);
     }
     @Test
@@ -60,11 +63,11 @@ public class Test_1 {
     public void enterCredentials() throws InterruptedException {
         driver.findElement(By.cssSelector("a[id$=\"-appointment\"]")).click();
         WebElement username = driver.findElement(By.xpath("//input[@id=\"txt-username\"]"));
-        username.sendKeys("John Doe");
+        username.sendKeys(Constants.USERNAME);
         WebElement password = driver.findElement(By.xpath("//input[@id=\"txt-password\"]"));
-        password.sendKeys("ThisIsNotAPassword");
+        password.sendKeys(Constants.PASSWORD);
         driver.findElement(By.cssSelector("button[class$=\"btn-default\"]")).click();
-        Thread.sleep(2000);
+        Thread.sleep(Constants.SHORT_WAIT);
     }
     @Test(dependsOnMethods = {"enterCredentials"})
     public void verifyAppointmentURL(){
@@ -102,7 +105,7 @@ public class Test_1 {
             driver.findElement(By.xpath("//button[contains(text(),\"Book Appointment\")]")).click();
         }
         System.out.println("Facility dropdown size is "+Facility_list.size());
-        Thread.sleep(2000);
+        Thread.sleep(Constants.SHORT_WAIT);
     }
     @Test (dependsOnMethods = {"makeAppointment"})
     public void verifyAppointmentConfirmation(){
@@ -118,7 +121,7 @@ public class Test_1 {
     @Test (dependsOnMethods = {"verifyAppointmentConfirmation"})
     public void goToHomePage() throws InterruptedException {
         driver.findElement(By.linkText("Go to Homepage")).click();
-        Thread.sleep(3000);
+        Thread.sleep(Constants.SHORT_WAIT);
     }
 
     @AfterTest
