@@ -1,0 +1,1 @@
+{"uuid":"4c12bd79-40c9-4e15-a87a-97e0586193e9","name":"SeleniumFram5X","children":["446881e6-940b-4cdc-b648-fdd345d5a9b7"],"befores":[{"name":"setUp","status":"passed","stage":"finished","description":"","steps":[],"attachments":[],"parameters":[],"start":1711266465750,"stop":1711266473158}],"afters":[],"start":1711266465735,"stop":1711266473261}

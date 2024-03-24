@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="All Test Suite">
-    <test verbose="2" preserve-order="true" name="D:/Selenium Project/SeleniumFram5X">
-        <parameter name="browser" value="edge"/>
+    <test verbose="2" preserve-order="true" name="D:/Selenium Project/SeleniumFram5X/src/test/java/KatalonDemoProject">
         <classes>
-            <class name="org.selenium.aj.Parameter_1">
+            <class name="KatalonDemoProject.Test_1">
             </class>
         </classes>
     </test>
