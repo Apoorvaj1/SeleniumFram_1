@@ -1,13 +1,11 @@
 package KatalonDemoProject;
 
-import KatalonDemoProject.Constants.Constants;
+import Constants.Constants;
 import org.openqa.selenium.By;
-import org.openqa.selenium.PageLoadStrategy;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.edge.EdgeDriver;
-import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.support.ui.Select;
+import org.selenium.base.Testbase;
 import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
@@ -17,16 +15,13 @@ import java.util.List;
 
 @Listeners(MyListeners.MyITestListeners.class)
 
-public class Test_1 {
+public class Test_1 extends Testbase {
     public static WebDriver driver;
     @BeforeTest
     public void setUp() throws InterruptedException {
-        EdgeOptions options = new EdgeOptions();
-        options.addArguments("--guest");
-        options.addArguments("--incognito");
-        options.setPageLoadStrategy(PageLoadStrategy.EAGER);
-        driver = new EdgeDriver(options);
-        driver.manage().window().maximize();
+        Testbase base = new Testbase();
+        base.initialize();
+        driver = getDriver();
         driver.get("https://katalon-demo-cura.herokuapp.com/");
         Thread.sleep(Constants.SHORT_WAIT);
     }

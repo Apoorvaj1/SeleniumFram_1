@@ -10,7 +10,7 @@ import org.openqa.selenium.edge.EdgeOptions;
 import java.util.Collections;
 
 public class EdgeOption {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         EdgeOptions options = new EdgeOptions();
         //options.addArguments("--headless");  //headless means web browser without user interface.
                                                // Increases efficiency of testing web applications
@@ -18,6 +18,7 @@ public class EdgeOption {
         options.setPageLoadStrategy(PageLoadStrategy.NORMAL);
         options.addArguments("--start-maximized");
         options.addArguments("--disable-notifications");
+        options.addArguments("--guest");
         //options.setExperimentalOption("excludeSwitches", Collections.singletonList("enable-automation"));
 
         EdgeDriver driver = new EdgeDriver(options);
@@ -27,10 +28,10 @@ public class EdgeOption {
         driver.switchTo().defaultContent();
         //driver.findElement(By.className("gLFyf")).sendKeys("Iphone15", Keys.ENTER);
         WebElement ab = driver.findElement(By.className("gLFyf"));
-        ab.sendKeys("Iphone 15");
-        driver.findElement(By.xpath("//input[@value=\"Google Search\"]")).click();
+        ab.sendKeys("Iphone 15",Keys.ENTER);
+        Thread.sleep(2000);
         System.out.println("Hello");
-        driver.quit();
+        //driver.quit();
 
     }
 }
