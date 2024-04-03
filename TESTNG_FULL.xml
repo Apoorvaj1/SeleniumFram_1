@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+
+    <listeners>
+        <listener class-name="MyListeners.MyITestListeners"/>
+    </listeners>
+    <test verbose="2" preserve-order="true" name="KatalonDemoProject">
+        <classes>
+            <class name="KatalonDemoProject.Test_1">
+            </class>
+        </classes>
+    </test>
+
+    <test verbose="2" preserve-order="true" name="DemoQA_Alert">
+        <classes>
+            <class name="DemoQA_Alert.AlertTest_1">
+            </class>
+        </classes>
+    </test>
+    <test verbose="2" preserve-order="true" name="DemoQA_TestVerify">
+        <classes>
+            <class name="DemoQA_TextVerify.TestVerify">
+            </class>
+        </classes>
+    </test>
+    <test verbose="2" preserve-order="true" name="OrangeHRM">
+        <classes>
+            <class name="OrangeHRMProject.OrangeTest">
+            </class>
+        </classes>
+    </test>
+
+
+</suite>

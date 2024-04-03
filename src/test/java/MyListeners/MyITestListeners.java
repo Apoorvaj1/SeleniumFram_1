@@ -1,6 +1,5 @@
 package MyListeners;
 
-import KatalonDemoProject.Test_1;
 import io.qameta.allure.Attachment;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
