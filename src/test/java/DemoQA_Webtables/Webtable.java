@@ -37,7 +37,22 @@ public class Webtable extends Testbase{
     @Test(dependsOnMethods = "editData")
     public void addNewdata() throws InterruptedException {
         driver.findElement(By.xpath("//button[@id=\"addNewRecordButton\"]")).click();
+        WebElement firstname = driver.findElement(By.xpath("//input[@id=\"firstName\"]"));
+        firstname.sendKeys(faker.name().firstName());
+        String value = firstname.getAttribute("value");
+        System.out.println("Value is "+value);
+        driver.findElement(By.xpath("//input[@id=\"lastName\"]")).sendKeys(faker.name().lastName());
+        driver.findElement(By.xpath("//input[@id=\"userEmail\"]")).sendKeys(value+"@gmail.com");
+        driver.findElement(By.xpath("//input[@id=\"age\"]")).sendKeys(faker.number().digits(10));
+        driver.findElement(By.xpath("//input[@id=\"salary\"]")).sendKeys(faker.number().digits(4));
+        driver.findElement(By.xpath("//input[@id=\"department\"]")).sendKeys(faker.company().name());
+        driver.findElement(By.xpath("//button[@id=\"submit\"]")).click();
         Thread.sleep(Constants.SHORT_WAIT);
+        driver.findElement(By.xpath("//input[@id=\"searchBox\"]")).sendKeys(value);
+        Thread.sleep(Constants.SHORT_WAIT);
+        driver.findElement(By.xpath("(//span[@id=\"delete-record-4\"])//*[local-name()=\"svg\"]")).click();
+        Thread.sleep(Constants.MEDIUM_WAIT);
+
     }
     @AfterTest
     public void tearDown(){
