@@ -1,6 +1,7 @@
 package DemoQA_Alert;
 
 import Constants.Constants;
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.selenium.base.Testbase;
@@ -50,6 +51,20 @@ public class AlertTest_1 extends Testbase {
         String cancel_text = driver.findElement(By.xpath("//span[@id=\"confirmResult\"]")).getText();
         System.out.println(cancel_text);
 
+    }
+    @Test
+    public void alert_4() throws InterruptedException {
+        driver.findElement(By.xpath("//button[@id=\"promtButton\"]")).click();
+        Thread.sleep(Constants.SHORT_WAIT);
+        Alert alert = driver.switchTo().alert();
+        String text = alert.getText();
+        System.out.println("Alert text is: "+text);
+        alert.sendKeys("Hello Apoorv");
+        Thread.sleep(Constants.MEDIUM_WAIT);
+        alert.accept();
+        Thread.sleep(Constants.SHORT_WAIT);
+        String text1 = driver.findElement(By.xpath("//span[@id=\"promptResult\"]")).getText();
+        System.out.println(text1);
     }
     @AfterTest
     public void tearDown(){
